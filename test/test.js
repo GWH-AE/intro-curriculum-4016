@@ -21,15 +21,17 @@ describe('/login', () => {
       .expect(/<a href="\/auth\/github"/)
       .expect(200);
   });
-　
+
   test('ログイン時はユーザー名が表示される', async () => {
     await request(app)
       .get('/login')
       .expect(/testuser/)
       .expect(200);
   });
+});
 
-  test('ログアウト後は/にリダイレクトされる', async () => {
+describe('/logout', () => {
+  test('/ にリダイレクトされる', async () => {
     await request(app)
       .get('/logout')
       .expect('Location', '/')
